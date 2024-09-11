@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 # Load the CSV data
-df = pd.read_csv('/home/olga/Pictures/project/all_videos_pose_keypoints.csv')
+df = pd.read_csv('/home/olga/Pictures/Rehab-app/all_videos_pose_keypoints.csv')
 
 # Let's assume we have the following columns:
 # 'left_shoulder_x', 'left_shoulder_y', 'right_shoulder_x', 'right_shoulder_y', etc.
