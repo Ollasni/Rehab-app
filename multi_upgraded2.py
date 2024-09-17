@@ -32,29 +32,28 @@ from flash.core.utilities.providers import _PYTORCHVIDEO
 import torch
 import torchvision.transforms as T
 from torchmetrics import Accuracy, F1Score
-#, MultilabelAccuracy
 
 from flash.core.utilities.types import (
     LOSS_FN_TYPE, LR_SCHEDULER_TYPE, METRICS_TYPE, OPTIMIZER_TYPE
-
 )
 from torchvision.transforms import RandomCrop, CenterCrop, Compose
 
-from utils import *  # Assuming you have custom utility functions here
-
 print(hasattr(K, 'VideoSequential'))
 
-# Utility to fetch video files
 def get_files(directory, extensions=['.mp4']):
     files = []
-    for root, _, filenames in os.walk(directory):
-        for filename in filenames:
-            if any(filename.endswith(ext) for ext in extensions):
-                files.append(Path(os.path.join(root, filename)))
-    print(f"Files found in {directory}: {files}") 
+    directory = Path(directory)
+    if not directory.is_dir():
+        print(f"Warning: {directory} is not a directory")
+        return files
+    for item in directory.rglob('*'):
+        if item.is_file() and item.suffix.lower() in extensions:
+            files.append(item)
+            print(f"Found file: {item}")
+    if not files:
+        print(f"No files with extensions {extensions} found in {directory}")
     return files
 
-# Function for one-hot encoding labels
 def one_hot_encode(exercise, exercises):
     return [1 if ex == exercise else 0 for ex in exercises]
 
@@ -85,7 +84,7 @@ def createMultiLabelDf(data_path):
     l = oneHot(vids)
     print(f"Shape of labels tensor: {l.shape}")
 
-    vids = [str(vid).replace(str(data_path) + "/", "") for vid in vids]
+    vids = [str(vid.relative_to(data_path)) for vid in vids]
 
     df = pd.DataFrame(
         {
@@ -102,28 +101,27 @@ def createMultiLabelDf(data_path):
             "Y BALANCE": l[:, 9],
         }
     )
-    csv_path = f"{data_path}/{data_path.name}.csv"
+    csv_path = data_path / f"{data_path.name}.csv"
     df.to_csv(csv_path, index=False)
     print(f"CSV file created at: {csv_path}")
     return df
 
-
-
-
 def normalize_tensor(tensor: Tensor, mean: Tensor, std: Tensor) -> Tensor:
-    return (tensor - mean[None, :, None, None]) / std[None, :, None, None]
+    if tensor.ndim == 4:  # (batch, channels, height, width)
+        return (tensor - mean[None, :, None, None]) / std[None, :, None, None]
+    elif tensor.ndim == 5:  # (batch, time, channels, height, width)
+        return (tensor - mean[None, None, :, None, None]) / std[None, None, :, None, None]
+    else:
+        raise ValueError(f"Unexpected tensor shape: {tensor.shape}")
 
-# Update the per_batch_transform_on_device method
 def per_batch_transform_on_device(self) -> Callable:
     return ApplyToKeys(
         DataKeys.INPUT,
         Compose([
             T.Lambda(lambda x: normalize_tensor(x, self.mean, self.std)),
-            # Add other transformations if needed
         ]),
     )
 
-# Transform class to handle input transformations
 class VideoClassificationInputTransform(InputTransform):
     image_size: int = 244
     temporal_sub_sample: int = 8
@@ -151,12 +149,12 @@ class VideoClassificationInputTransform(InputTransform):
             DataKeys.INPUT,
             Compose([
                 T.Lambda(lambda x: normalize_tensor(x, self.mean, self.std)),
-                # Add other transformations if needed
             ]),
         )
 
 def normalize(x: Tensor) -> Tensor:
     return x / 255.0
+
 class TransformDataModule(InputTransform):
     image_size: int = 256
     temporal_sub_sample: int = 16
@@ -167,7 +165,6 @@ class TransformDataModule(InputTransform):
 
     def per_sample_transform(self) -> Callable:
         per_sample_transform = [CenterCrop(self.image_size)]
-
         return Compose(
             [
                 ApplyToKeys(
@@ -183,7 +180,6 @@ class TransformDataModule(InputTransform):
 
     def train_per_sample_transform(self) -> Callable:
         per_sample_transform = [RandomCrop(self.image_size, pad_if_needed=True)]
-
         return Compose(
             [
                 ApplyToKeys(
@@ -207,27 +203,15 @@ class TransformDataModule(InputTransform):
             ),
         )
 
-# Binary cross entropy for multi-label classification
 def binary_cross_entropy_with_logits(x: Tensor, y: Tensor) -> Tensor:
     return F.binary_cross_entropy_with_logits(x, y.float())
-    
-    
+
 _VIDEO_CLASSIFIER_BACKBONES = FlashRegistry("backbones")
-
-#_PYTORCHVIDEO = "pytorchvideo"
-
-#try:
- #   import pytorchvideo
-  #  _PYTORCHVIDEO_AVAILABLE = True
-#except ImportError:
- #   _PYTORCHVIDEO_AVAILABLE = False
 
 print(f"PyTorchVideo available: {_PYTORCHVIDEO_AVAILABLE}")
 
-
 if _PYTORCHVIDEO_AVAILABLE:
     from pytorchvideo.models import hub
-
     for fn_name in dir(hub):
         if "__" not in fn_name:
             fn = getattr(hub, fn_name)
@@ -236,7 +220,6 @@ if _PYTORCHVIDEO_AVAILABLE:
 
 class VC(ClassificationTask):
     backbones: FlashRegistry = _VIDEO_CLASSIFIER_BACKBONES
-
     required_extras = "video"
 
     def __init__(
@@ -327,62 +310,52 @@ class VC(ClassificationTask):
     def modules_to_freeze(
         self,
     ) -> Union[nn.Module, Iterable[Union[nn.Module, Iterable]]]:
-        """Return the module attributes of the model to be frozen."""
         return list(self.backbone.children())
 
-# Define custom Video Classification task
-#class VC(ClassificationTask):
- #   backbones: FlashRegistry = FlashRegistry("backbones")
-#
- #   def __init__(self, num_classes: Optional[int] = None, **kwargs):
-  #      if kwargs.get('labels') and num_classes is None: 
-   #         num_classes = len(kwargs['labels'])
-    #        print(f"Detected num_classes: {num_classes}") 
-        super().__init__(**kwargs)
-        self.num_classes = num_classes
-     #   print(f"num_classes set in VC: {self.num_classes}") 
-        # You can initialize the backbone and head here, as in your original code.
-
-
-# Проверьте существование файлов
+# Main execution
 print("Checking files...")
 print("Train CSV exists:", os.path.isfile("/home/olga/Pictures/Rehab-app/train_data.csv"))
 print("Validation CSV exists:", os.path.isfile("/home/olga/Pictures/Rehab-app/val_data.csv"))
 print("Train video directory exists:", os.path.isdir("/home/olga/Pictures/Rehab-app/video_dataset/train"))
 print("Validation video directory exists:", os.path.isdir("/home/olga/Pictures/Rehab-app/video_dataset/val"))
 
-train_data_path = "/home/olga/Pictures/Rehab-app/video_dataset/train/train.csv"
-val_data_path = "/home/olga/Pictures/Rehab-app/video_dataset/val/val.csv"
+train_data_path = Path("/home/olga/Pictures/Rehab-app/train")
+val_data_path = Path("/home/olga/Pictures/Rehab-app/val")
+
+print("Creating train CSV...")
 train_csv = createMultiLabelDf(train_data_path)
+print("Train CSV shape:", train_csv.shape)
+
+print("\nCreating validation CSV...")
 val_csv = createMultiLabelDf(val_data_path)
+print("Validation CSV shape:", val_csv.shape)
 
+print("\nChecking CSV contents:")
+print("Train CSV:")
+print(train_csv.head())
+print("\nValidation CSV:")
+print(val_csv.head())
 
-#print("Model labels:", model.labels)
-# Load and prepare data using VideoClassificationData
 datamodule = VideoClassificationData.from_csv(
     "video",
     ["HEEL WALKING", "PINCH GRIP", "PLANK", "REVERSE LUNGE", "SCAPULA PROTRACTION", "TREE", "TRICEP DIPS", "TRICEP EXTENSION", "WAITERS BOW", "Y BALANCE"],
-    train_file="/home/olga/Pictures/Rehab-app/train_data.csv",
-    val_file="/home/olga/Pictures/Rehab-app/val_data.csv",
-    train_videos_root="/home/olga/Pictures/Rehab-app/video_dataset/train",
-    val_videos_root="/home/olga/Pictures/Rehab-app/video_dataset/val",
+    train_file=str(train_data_path / "train.csv"),
+    val_file=str(val_data_path / "val.csv"),
+    train_videos_root=str(train_data_path),
+    val_videos_root=str(val_data_path),
     clip_sampler="uniform",
     clip_duration=1,
-    batch_size=4,
+    batch_size=8,
     num_workers=2,
     transform=VideoClassificationInputTransform(),
 )
 
-
-
 print("Labels:", datamodule.labels)
-
-# Выводим информацию о содержимом данных
 print("Train files:", datamodule.train_dataset)
 print("Validation files:", datamodule.val_dataset)
 
-metrics = (F1Score(num_labels=datamodule.num_classes, task="multilabel", top_k=1))
-#metrics = MultilabelAccuracy(num_labels, threshold=0.5, average=None)
+metrics = F1Score(num_labels=datamodule.num_classes, task="multilabel", top_k=1)
+
 
 head = nn.Sequential(
     nn.Flatten(start_dim=1, end_dim=-1),

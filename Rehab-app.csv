@@ -1,0 +1,103 @@
+video,HEEL WALKING,PINCH GRIP,PLANK,REVERSE LUNGE,SCAPULA PROTRACTION,TREE,TRICEP DIPS,TRICEP EXTENSION,WAITERS BOW,Y BALANCE
+video_simple_exec/PINCH GRIP/PINCH GRIP_part1.mp4,0,1,0,0,0,0,0,0,0,0
+video_simple_exec/PINCH GRIP/PINCH GRIP_part0.mp4,0,1,0,0,0,0,0,0,0,0
+video_simple_exec/PINCH GRIP/PINCH GRIP_part3.mp4,0,1,0,0,0,0,0,0,0,0
+video_simple_exec/PINCH GRIP/PINCH GRIP_part2.mp4,0,1,0,0,0,0,0,0,0,0
+video_simple_exec/Y BALANCE/Y BALANCE_part2.mp4,0,0,0,0,0,0,0,0,0,1
+video_simple_exec/Y BALANCE/Y BALANCE_part1.mp4,0,0,0,0,0,0,0,0,0,1
+video_simple_exec/Y BALANCE/Y BALANCE_part0.mp4,0,0,0,0,0,0,0,0,0,1
+video_simple_exec/Y BALANCE/Y BALANCE_part4.mp4,0,0,0,0,0,0,0,0,0,1
+video_simple_exec/Y BALANCE/Y BALANCE_part5.mp4,0,0,0,0,0,0,0,0,0,1
+video_simple_exec/Y BALANCE/Y BALANCE_part3.mp4,0,0,0,0,0,0,0,0,0,1
+video_simple_exec/TRICEP EXTENSION/TRICEP EXTENSION_part2.mp4,0,0,0,0,0,0,0,1,0,0
+video_simple_exec/TRICEP EXTENSION/TRICEP EXTENSION_part4.mp4,0,0,0,0,0,0,0,1,0,0
+video_simple_exec/TRICEP EXTENSION/TRICEP EXTENSION_part6.mp4,0,0,0,0,0,0,0,1,0,0
+video_simple_exec/TRICEP EXTENSION/TRICEP EXTENSION_part0.mp4,0,0,0,0,0,0,0,1,0,0
+video_simple_exec/TRICEP EXTENSION/TRICEP EXTENSION_part5.mp4,0,0,0,0,0,0,0,1,0,0
+video_simple_exec/TRICEP EXTENSION/TRICEP EXTENSION_part1.mp4,0,0,0,0,0,0,0,1,0,0
+video_simple_exec/TRICEP EXTENSION/TRICEP EXTENSION_part3.mp4,0,0,0,0,0,0,0,1,0,0
+video_simple_exec/TRICEP EXTENSION/TRICEP EXTENSION_part7.mp4,0,0,0,0,0,0,0,1,0,0
+video_simple_exec/PLANK/PLANK_part2.mp4,0,0,1,0,0,0,0,0,0,0
+video_simple_exec/PLANK/PLANK_part0.mp4,0,0,1,0,0,0,0,0,0,0
+video_simple_exec/PLANK/PLANK_part1.mp4,0,0,1,0,0,0,0,0,0,0
+video_simple_exec/PLANK/PLANK_part3.mp4,0,0,1,0,0,0,0,0,0,0
+video_simple_exec/TRICEP DIPS/TRICEP DIPS_part0.mp4,0,0,0,0,0,0,1,0,0,0
+video_simple_exec/TRICEP DIPS/TRICEP DIPS_part1.mp4,0,0,0,0,0,0,1,0,0,0
+video_simple_exec/REVERSE LUNGE/REVERSE LUNGE_part2.mp4,0,0,0,1,0,0,0,0,0,0
+video_simple_exec/REVERSE LUNGE/REVERSE LUNGE_part0.mp4,0,0,0,1,0,0,0,0,0,0
+video_simple_exec/REVERSE LUNGE/REVERSE LUNGE_part1.mp4,0,0,0,1,0,0,0,0,0,0
+video_simple_exec/REVERSE LUNGE/REVERSE LUNGE_part3.mp4,0,0,0,1,0,0,0,0,0,0
+video_simple_exec/TREE/TREE_part0.mp4,0,0,0,0,0,1,0,0,0,0
+video_simple_exec/TREE/TREE_part2.mp4,0,0,0,0,0,1,0,0,0,0
+video_simple_exec/TREE/TREE_part1.mp4,0,0,0,0,0,1,0,0,0,0
+video_simple_exec/HEEL WALKING/HEEL WALKING_part2.mp4,1,0,0,0,0,0,0,0,0,0
+video_simple_exec/HEEL WALKING/HEEL WALKING_part3.mp4,1,0,0,0,0,0,0,0,0,0
+video_simple_exec/HEEL WALKING/HEEL WALKING_part1.mp4,1,0,0,0,0,0,0,0,0,0
+video_simple_exec/HEEL WALKING/HEEL WALKING_part5.mp4,1,0,0,0,0,0,0,0,0,0
+video_simple_exec/HEEL WALKING/HEEL WALKING_part4.mp4,1,0,0,0,0,0,0,0,0,0
+video_simple_exec/HEEL WALKING/HEEL WALKING_part0.mp4,1,0,0,0,0,0,0,0,0,0
+video_simple_exec/WAITERS BOW/WAITERS BOW_part0.mp4,0,0,0,0,0,0,0,0,1,0
+video_simple_exec/WAITERS BOW/WAITERS BOW_part1.mp4,0,0,0,0,0,0,0,0,1,0
+video_simple_exec/SCAPULA PROTRACTION/SCAPULA PROTRACTION_part0.mp4,0,0,0,0,1,0,0,0,0,0
+video_simple_exec/SCAPULA PROTRACTION/SCAPULA PROTRACTION_part3.mp4,0,0,0,0,1,0,0,0,0,0
+video_simple_exec/SCAPULA PROTRACTION/SCAPULA PROTRACTION_part4.mp4,0,0,0,0,1,0,0,0,0,0
+video_simple_exec/SCAPULA PROTRACTION/SCAPULA PROTRACTION_part2.mp4,0,0,0,0,1,0,0,0,0,0
+video_simple_exec/SCAPULA PROTRACTION/SCAPULA PROTRACTION_part1.mp4,0,0,0,0,1,0,0,0,0,0
+video_dataset/val/PINCH GRIP/PINCH GRIP_part1.mp4,0,1,0,0,0,0,0,0,0,0
+video_dataset/val/PINCH GRIP/PINCH GRIP_part0.mp4,0,1,0,0,0,0,0,0,0,0
+video_dataset/val/Y BALANCE/Y BALANCE_part1.mp4,0,0,0,0,0,0,0,0,0,1
+video_dataset/val/Y BALANCE/Y BALANCE_part0.mp4,0,0,0,0,0,0,0,0,0,1
+video_dataset/val/TRICEP EXTENSION/TRICEP EXTENSION_part0.mp4,0,0,0,0,0,0,0,1,0,0
+video_dataset/val/TRICEP EXTENSION/TRICEP EXTENSION_part1.mp4,0,0,0,0,0,0,0,1,0,0
+video_dataset/val/PLANK/PLANK_part0.mp4,0,0,1,0,0,0,0,0,0,0
+video_dataset/val/PLANK/PLANK_part1.mp4,0,0,1,0,0,0,0,0,0,0
+video_dataset/val/TRICEP DIPS/TRICEP DIPS_part0.mp4,0,0,0,0,0,0,1,0,0,0
+video_dataset/val/TRICEP DIPS/TRICEP DIPS_part1.mp4,0,0,0,0,0,0,1,0,0,0
+video_dataset/val/REVERSE LUNGE/REVERSE LUNGE_part0.mp4,0,0,0,1,0,0,0,0,0,0
+video_dataset/val/REVERSE LUNGE/REVERSE LUNGE_part1.mp4,0,0,0,1,0,0,0,0,0,0
+video_dataset/val/TREE/TREE_part0.mp4,0,0,0,0,0,1,0,0,0,0
+video_dataset/val/TREE/TREE_part1.mp4,0,0,0,0,0,1,0,0,0,0
+video_dataset/val/HEEL WALKING/HEEL WALKING_part1.mp4,1,0,0,0,0,0,0,0,0,0
+video_dataset/val/HEEL WALKING/HEEL WALKING_part0.mp4,1,0,0,0,0,0,0,0,0,0
+video_dataset/val/WAITERS BOW/WAITERS BOW_part0.mp4,0,0,0,0,0,0,0,0,1,0
+video_dataset/val/WAITERS BOW/WAITERS BOW_part1.mp4,0,0,0,0,0,0,0,0,1,0
+video_dataset/val/SCAPULA PROTRACTION/SCAPULA PROTRACTION_part0.mp4,0,0,0,0,1,0,0,0,0,0
+video_dataset/val/SCAPULA PROTRACTION/SCAPULA PROTRACTION_part1.mp4,0,0,0,0,1,0,0,0,0,0
+video_dataset/train/PINCH GRIP/PINCH GRIP_part1.mp4,0,1,0,0,0,0,0,0,0,0
+video_dataset/train/PINCH GRIP/PINCH GRIP_part0.mp4,0,1,0,0,0,0,0,0,0,0
+video_dataset/train/PINCH GRIP/PINCH GRIP_part3.mp4,0,1,0,0,0,0,0,0,0,0
+video_dataset/train/PINCH GRIP/PINCH GRIP_part2.mp4,0,1,0,0,0,0,0,0,0,0
+video_dataset/train/Y BALANCE/Y BALANCE_part2.mp4,0,0,0,0,0,0,0,0,0,1
+video_dataset/train/Y BALANCE/Y BALANCE_part1.mp4,0,0,0,0,0,0,0,0,0,1
+video_dataset/train/Y BALANCE/Y BALANCE_part4.mp4,0,0,0,0,0,0,0,0,0,1
+video_dataset/train/Y BALANCE/Y BALANCE_part5.mp4,0,0,0,0,0,0,0,0,0,1
+video_dataset/train/Y BALANCE/Y BALANCE_part3.mp4,0,0,0,0,0,0,0,0,0,1
+video_dataset/train/TRICEP EXTENSION/TRICEP EXTENSION_part2.mp4,0,0,0,0,0,0,0,1,0,0
+video_dataset/train/TRICEP EXTENSION/TRICEP EXTENSION_part4.mp4,0,0,0,0,0,0,0,1,0,0
+video_dataset/train/TRICEP EXTENSION/TRICEP EXTENSION_part6.mp4,0,0,0,0,0,0,0,1,0,0
+video_dataset/train/TRICEP EXTENSION/TRICEP EXTENSION_part5.mp4,0,0,0,0,0,0,0,1,0,0
+video_dataset/train/TRICEP EXTENSION/TRICEP EXTENSION_part3.mp4,0,0,0,0,0,0,0,1,0,0
+video_dataset/train/TRICEP EXTENSION/TRICEP EXTENSION_part7.mp4,0,0,0,0,0,0,0,1,0,0
+video_dataset/train/PLANK/PLANK_part2.mp4,0,0,1,0,0,0,0,0,0,0
+video_dataset/train/PLANK/PLANK_part0.mp4,0,0,1,0,0,0,0,0,0,0
+video_dataset/train/PLANK/PLANK_part1.mp4,0,0,1,0,0,0,0,0,0,0
+video_dataset/train/PLANK/PLANK_part3.mp4,0,0,1,0,0,0,0,0,0,0
+video_dataset/train/TRICEP DIPS/TRICEP DIPS_part0.mp4,0,0,0,0,0,0,1,0,0,0
+video_dataset/train/TRICEP DIPS/TRICEP DIPS_part1.mp4,0,0,0,0,0,0,1,0,0,0
+video_dataset/train/REVERSE LUNGE/REVERSE LUNGE_part2.mp4,0,0,0,1,0,0,0,0,0,0
+video_dataset/train/REVERSE LUNGE/REVERSE LUNGE_part1.mp4,0,0,0,1,0,0,0,0,0,0
+video_dataset/train/REVERSE LUNGE/REVERSE LUNGE_part3.mp4,0,0,0,1,0,0,0,0,0,0
+video_dataset/train/TREE/TREE_part0.mp4,0,0,0,0,0,1,0,0,0,0
+video_dataset/train/TREE/TREE_part2.mp4,0,0,0,0,0,1,0,0,0,0
+video_dataset/train/TREE/TREE_part1.mp4,0,0,0,0,0,1,0,0,0,0
+video_dataset/train/HEEL WALKING/HEEL WALKING_part2.mp4,1,0,0,0,0,0,0,0,0,0
+video_dataset/train/HEEL WALKING/HEEL WALKING_part3.mp4,1,0,0,0,0,0,0,0,0,0
+video_dataset/train/HEEL WALKING/HEEL WALKING_part1.mp4,1,0,0,0,0,0,0,0,0,0
+video_dataset/train/HEEL WALKING/HEEL WALKING_part5.mp4,1,0,0,0,0,0,0,0,0,0
+video_dataset/train/HEEL WALKING/HEEL WALKING_part4.mp4,1,0,0,0,0,0,0,0,0,0
+video_dataset/train/WAITERS BOW/WAITERS BOW_part0.mp4,0,0,0,0,0,0,0,0,1,0
+video_dataset/train/WAITERS BOW/WAITERS BOW_part1.mp4,0,0,0,0,0,0,0,0,1,0
+video_dataset/train/SCAPULA PROTRACTION/SCAPULA PROTRACTION_part3.mp4,0,0,0,0,1,0,0,0,0,0
+video_dataset/train/SCAPULA PROTRACTION/SCAPULA PROTRACTION_part4.mp4,0,0,0,0,1,0,0,0,0,0
+video_dataset/train/SCAPULA PROTRACTION/SCAPULA PROTRACTION_part2.mp4,0,0,0,0,1,0,0,0,0,0
+video_dataset/train/SCAPULA PROTRACTION/SCAPULA PROTRACTION_part1.mp4,0,0,0,0,1,0,0,0,0,0

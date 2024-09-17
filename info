@@ -1,0 +1,131 @@
+To run the provided code, which involves training a video classification model using PyTorch Lightning Flash with an X3D-M backbone, you'll need certain computational resources. Here's an estimation of the required computational power:
+
+---
+
+### **1. GPU Requirements**
+
+**GPU Memory (VRAM):**
+
+- **Minimum:** 8 GB
+- **Recommended:** 12 GB or more
+
+**Explanation:**
+
+- **Model Complexity:** The X3D-M backbone is a deep video classification model that processes spatiotemporal data, which is more memory-intensive than standard image models.
+- **Batch Size:** The code uses a batch size of **8**. Higher batch sizes require more VRAM.
+- **Video Data:** Videos have an additional temporal dimension, increasing the amount of data processed per sample.
+
+**Suggested GPUs:**
+
+- **NVIDIA RTX Series:** RTX 3060 (12 GB), RTX 3080 (10 GB), RTX 3090 (24 GB)
+- **NVIDIA Tesla Series:** V100 (16 GB), A100 (40 GB)
+
+---
+
+### **2. CPU Requirements**
+
+**Processor:**
+
+- **Minimum:** Quad-core CPU
+- **Recommended:** Six-core or higher
+
+**RAM:**
+
+- **Minimum:** 16 GB
+- **Recommended:** 32 GB or more
+
+**Explanation:**
+
+- **Data Loading:** Video data requires efficient loading and preprocessing. Multiple CPU cores help in parallelizing these tasks.
+- **RAM Usage:** Large datasets and higher `num_workers` in data loaders consume more RAM.
+
+---
+
+### **3. Storage Requirements**
+
+**Disk Space:**
+
+- **Dataset Storage:** Depends on your video dataset size (e.g., hundreds of GBs for large datasets)
+- **Working Space:** Additional 20–50 GB for temporary files and checkpoints
+
+**Storage Type:**
+
+- **Recommended:** SSD for faster read/write speeds
+
+---
+
+### **4. Software Requirements**
+
+**Operating System:**
+
+- Linux (Ubuntu 18.04 or later recommended)
+- Windows 10
+- macOS (with compatible GPU)
+
+**Python Environment:**
+
+- **Python Version:** 3.7 or higher
+
+**Dependencies:**
+
+- **PyTorch:** Compatible with your CUDA version
+- **PyTorch Lightning:** For training loops
+- **Flash:** High-level tasks on top of PyTorch Lightning
+- **Torchvision, Kornia, PytorchVideo:** For video transformations and models
+- **Others:** pandas, numpy, etc.
+
+---
+
+### **5. Additional Considerations**
+
+**CUDA and Drivers:**
+
+- **CUDA Version:** Ensure compatibility with your GPU and PyTorch version
+- **Drivers:** Up-to-date NVIDIA drivers
+
+**Batch Size Adjustments:**
+
+- If you encounter out-of-memory (OOM) errors, reduce the batch size or input size.
+
+**Data Loader Workers:**
+
+- **num_workers=2** is set in the code. Depending on your CPU cores and RAM, you might increase this to speed up data loading.
+
+---
+
+### **6. Runtime Estimations**
+
+**Training Time:**
+
+- With `max_epochs=2`, the training time can vary:
+  - **On a high-end GPU:** Approximately 30 minutes
+  - **On a mid-range GPU:** 1–2 hours
+
+**Memory Usage Monitoring:**
+
+- Monitor GPU and RAM usage during the first run to adjust settings as needed.
+
+---
+
+### **Summary**
+
+To execute the code effectively:
+
+- **GPU:**
+  - Minimum 8 GB VRAM (12 GB or more recommended)
+  - CUDA-compatible GPU with updated drivers
+- **CPU:**
+  - Quad-core processor (Six-core or more recommended)
+  - Minimum 16 GB RAM (32 GB recommended)
+- **Storage:**
+  - Sufficient disk space for dataset and outputs
+  - Preferably an SSD
+- **Software:**
+  - Python 3.7+
+  - Required Python libraries and frameworks installed
+- **Adjustments:**
+  - Be prepared to tweak batch sizes or other parameters based on available resources
+
+---
+
+**Note:** Running deep learning models, especially with video data, is resource-intensive. If you don't have access to the recommended hardware, consider using cloud platforms like Google Colab (with GPU runtime), AWS EC2 with GPU instances, or other cloud services that provide powerful GPUs.
